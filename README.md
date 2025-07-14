@@ -119,29 +119,32 @@ The flowchart below illustrates the system's LangGraph-driven orchestration logi
 
 ```
 Agentic_AI_Developer_Certification_Project2/
-├── app.py                         # Streamlit entry point
-├── explorer.py                    # LangGraph orchestration logic
-├── loader.py                      # JSON → .txt converter
-├── paths.py                       # Central path definitions
-├── generate_langgraph_mermaid.py  # Mermaid diagram generator
-├── generate_graphviz_flowchart.py # Graphviz diagram generator
-├── utils.py                       # Helper functions
-├── data/
-│   └── project_1_publications.json
-│   └── sample_publications/
-│      └── <publication>.txt
-├── requirements.txt
-├── .env.example
-├── .gitignore
-├── LICENSE
-├── outputs/
-│   ├── comparison_pub1_vs_pub2.html
-│   └── comparison_pub1_vs_pub2.json
+├── src/
+│   ├── app.py                         # Main Streamlit App UI (entry point for the web interface)
+│   ├── explorer.py                    # Core logic for publication analysis using LangGraph and LLMs
+│   ├── generate_flowchart_graphviz.py # Generates a Graphviz PNG diagram of the LangGraph orchestration flow
+│   ├── generate_flowchart_mermaid.py  # Generates a Mermaid diagram of the LangGraph orchestration flow
+│   ├── loader.py                      # Converts JSON into individual .txt files from the Sample Ready Tensor dataset
+│   ├── paths.py                       # Centralized path definitions
+│   ├── utils.py                       # Helper functions for path and string handling
+├── .env.example                      # Example environment file storing secret API keys
+├── data/                      
+│   ├── project_1_publications.json   # Sample Ready Tensor dataset
+│   └── sample_publications/          # Directory containing input publication `.txt` files
+│       └── <publication .txt>        # ↳ Each text file represents a single publication
+├── requirements.txt                  # Dependency list for pip install (Streamlit, LangChain, etc.)
+├── README.md                         # Project documentation explaining setup and usage
+├── .gitignore                        # Specifies files/folders to be ignored by Git
+├── LICENCE                           # Project license file
+├── outputs/                          
+│   ├── <comparison publ1 vs publ2 .html> # ↳ HTML output of comparisons
+│   └── <comparison publ1 vs publ2 .json> # ↳ JSON output of comparisons
 ├── docs/
-│   ├── publication_flowchart.png
-│   └── langgraph_flowchart.mmd
-└── examples_screenshots/
-    └── streamlit_comparison.jpeg
+│   ├── publication_flowchart.png         # ↳ Graphviz diagram (PNG)
+│   ├── langgraph_flowchart.mmd           # ↳ Mermaid diagram (MMD)
+│   └── Untitled diagram _ Mermaid Chart-2025-07-09-115351.png # ↳ Mermaid diagram (PNG)
+├── examples_screens/
+│   └── <screenshot .jpeg>                # ↳ UI usage screenshots
 ```
 
 ---
@@ -161,7 +164,7 @@ Agentic_AI_Developer_Certification_Project2/
 1. **Clone & Checkout**
 
    ```bash
-   git clone https://github.com/Joshua-Abok/Agentic-AI-Developer-Certification-Project2
+   git clone https://github.com/micag2025/Agentic_AI_Developer_Certification_Project2
    cd Agentic-AI-Developer-Certification-Project2
    git checkout main
    ```
@@ -194,11 +197,12 @@ Agentic_AI_Developer_Certification_Project2/
 2. **Launch Streamlit**
 
    ```bash
-   streamlit run app.py
+   streamlit run src/app.py
    ```
 3. **Open in Browser**
    Navigate to `http://localhost:8501` to access the Research Assistant.
 
+![Streamlit Interface](images/1_Screenshot_initial_StreamLit_interface.jpeg)
 ---
 
 ## Usage Examples
@@ -228,6 +232,19 @@ Agentic_AI_Developer_Certification_Project2/
 
 ---
 
+
+## References
+- [LangGraph](https://www.langchain.com/langgraph)
+- [LangChain](https://www.langchain.com/langchain)                 
+- [Openai API](https://huggingface.co/learn/agents-course/unit2/langgraph/introduction?utm_source=chatgpt.com)
+- [Streamlit](https://docs.streamlit.io/)
+- [Tavily](https://www.tavily.com/)
+- [Mermaid] (https://mermaid.js.org/)
+- [Ready Tensor Certifications](https://app.readytensor.ai/hubs/ready_tensor_certifications)
+- [Technical Evaluation Rubric](https://app.readytensor.ai/publications/WsaE5uxLBqnH)
+- [Engage and Inspire: Best Practices for Publishing on Ready Tensor](https://app.readytensor.ai/publications/engage_and_inspire_best_practices_for_publishing_on_ready_tensor_SBgkOyUsP8qQ)
+
+
 ## Contributing
 
 We welcome enhancements and issue reports:
@@ -240,6 +257,26 @@ We welcome enhancements and issue reports:
 Please adhere to existing code style and update documentation as needed.
 
 ---
+
+
+## Future Implementations
+
+We welcome contributors to propose and build enhancements to this system. Some of the upcoming or potential future features include:
+
+* **Prompt Engineering Enhancements:** Design more precise and instructive prompts using structured formats, few-shot examples, and task-specific templates to improve agent performance.
+
+* **Multi-Query Support:** Enable users to submit multiple queries simultaneously (e.g., "Tool Usage", "Task Types") for more efficient comparative analysis.
+
+* **Expanded Agent Toolkit & Visualizations:** Integrate additional agent tools (e.g., citation extractors, figure summarizers) and visual representations (charts, relationship graphs) to provide deeper analytical insights.
+
+* **Advanced UI/UX Overhaul:** Build a more responsive and intuitive user interface with enhanced interactivity, visualization panels, and accessibility features.
+
+* **LLM Fine-Tuning Integration:** Incorporate fine-tuned or domain-adapted LLMs for improved accuracy in extraction, summarization, and reasoning tasks.
+
+* **Feedback & Evaluation Mechanisms:** Implement user rating and feedback forms for each response to continuously fine-tune performance and relevance.
+
+Contributors are encouraged to fork the repository, submit pull requests, or open discussions for feature suggestions and design proposals. For bug reports or feature requests, [open an issue](https://github.com/micag2025/Agentic_AI_Developer_Certification_Project2/issues). For general questions or share your thoughts, start a [comment](https://app.readytensor.ai/publications/IQBETLgAsJ9X).
+
 
 ## License
 
