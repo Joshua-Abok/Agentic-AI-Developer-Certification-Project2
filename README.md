@@ -1,6 +1,6 @@
 # **Agentic AI Developer Certification: LangGraph-Orchestrated Research Assistant for Ready Tensor**
 
-![Image Logo](Image_Logo.jpg)
+![Image Logo](ai-agent.webp)
 
 ### **Tags:** AAIDC2025 · AAIDC‑M2 · Agentic AI · Certification Program · Chain-of-Thought · Document Assistant · LangChain · LangGraph · Question-Answering (QA) · Retrieval‑Augmented Generation (RAG) · ReAct · Vector Databases
 ### **Co‑Authors:** chibueze.k.muoneke@gmail.com, michelaagostini73@gmail.com
@@ -24,39 +24,64 @@ This modular, secure pipeline facilitates rapid document comparison, summarizati
 
 ## Tool Overview & Architecture
 
-The application is built on a **modular LangChain + LangGraph pipeline**, orchestrated as follows:
+### System Architecture Goals
 
-1. **Publication Ingestion**
+The assistant leverages cutting-edge technologies to create a robust and scalable solution. LangChain and LangGraph together provide an orchestration framework for a multi-agent RAG pipeline, supporting document ingestion, intelligent querying, agent routing, and structured output generation. OpenAI embeddings and Chroma vector storage enable fast semantic retrieval, while ReAct-style external enrichment ensures access to up-to-date information.
 
-   * **Loader:** Parses `project_1_publications.json` into individual `.txt` files
-   * **Preprocessor:** Cleans and normalizes text (titles → filenames, preserves structure)
+The system is grounded in five primary architectural goals:
 
-2. **Vectorization & Storage**
+### 1. Robust Data Ingestion Pipeline
 
-   * **Embeddings:** OpenAI embeddings via LangChain
-   * **Vector DB:** Chroma for fast semantic retrieval
+* **Publication Loader** parses `project_1_publications.json` into clean, structured `.txt` files.
+* Metadata is preserved while filenames are sanitized for consistency.
+* Preprocessing includes normalization, structure preservation, and integrity validation.
 
-3. **Agent‑Based Analysis (LangGraph)**
+### 2. Efficient Vector Storage & Retrieval
 
-   * **Orchestration Agent:** A LangGraph state‑machine that routes tasks to specialized nodes
-   * **Profile Extraction Node:** GPT‑powered extraction of tools, datasets, metrics, tasks, results
-   * **Comparison Engine Node:** Aligns two publication profiles for side‑by‑side analysis
-   * **Trend Aggregator Node:** Detects evolving patterns across methods or results
-   * **Fact‑Checking Node:** Cross‑verifies generated insights with source text
-   * **Enrichment Node:** ReAct agent performing Tavily web searches for external context
+* OpenAI-generated embeddings are stored and retrieved using **Chroma**, a high-performance vector database.
+* Index creation and persistence are optimized for fast semantic search operations.
 
-4. **Visualization Layer**
+### 3. Multi-Agent Orchestration & Reasoning (LangGraph)
 
-   * **Streamlit UI:** Interactive sidebar for publication selection and query input
-   * **Flowchart Generation:**
+* Built around a **LangGraph** state machine that routes queries to multiple specialized agents:
 
-     * **Mermaid:** Outputs `.mmd` flow definitions
-     * **Graphviz:** Produces PNG diagrams of the orchestration graph
+  * **Profile Extraction Agent**: Identifies tools, datasets, metrics, and results from publications.
+  * **Comparison Engine Agent**: Aligns and contrasts attributes across two documents.
+  * **Trend Aggregator Agent**: Detects cross-publication patterns and method trends.
+  * **Fact-Checker Agent**: Verifies information consistency with source texts.
+  * **Enrichment Agent**: Uses **ReAct** strategy with **Tavily** search to add real-world context.
 
-5. **Security & Environment**
+### 4. Visualization and Interaction Layer
 
-   * **Secrets Management:** `.env` for `OPENAI_API_KEY` & `TAVILY_API_KEY`
-   * **Git Hygiene:** Preconfigured `.gitignore` to exclude secrets and outputs
+* **Streamlit** provides a responsive user interface:
+
+  * Dropdown selectors for publications
+  * Query input area for comparison topics
+  * Output panels for structured responses
+* Orchestration diagrams:
+
+  * **Mermaid** outputs `.mmd` files for doc embedding
+  * **Graphviz** generates PNG flowcharts for documentation and presentations
+
+### 5. Secure and Configurable Development Environment
+
+* Environment configuration managed through `.env` file:
+
+  * `OPENAI_API_KEY`, `TAVILY_API_KEY` safely handled
+* `.gitignore` ensures secrets, logs, and large outputs are excluded from version control
+
+### Workflow
+The flowchart below illustrates the system's LangGraph-driven orchestration logic:
+
+* Two publications are selected from the Ready Tensor dataset.
+* Each publication is analyzed independently to extract relevant metadata.
+* A comparison agent aligns and contrasts their content.
+* Aggregated trends are generated from the analysis.
+* A summarization step compiles key findings.
+* A fact-checking node validates the results against the source documents.
+* The workflow terminates with a structured response ready for user presentation.
+
+![Workflow Diagram](images/publication_flowchart.png)
 
 ---
 
@@ -182,19 +207,26 @@ Agentic_AI_Developer_Certification_Project2/
 
 1. **Select Publications**
    Choose two publications from the dropdown menus.
-![Streamlit comparison example](images/5_Screenshot_Streamlit_example_usage1.jpeg)
+![Streamlit comparison example](images/4_Screenshot_Streamlit_options_query_types.jpeg)
 2. **Enter a Query**
    E.g., “Evaluation Methods” or “Dataset comparisons”.
 ![Extracted attributes per publication](images/6_Screenshot_Streamlit_example_usage1_processing.jpeg)
 3. **View Results**
 
    * Side‑by‑side comparison table of extracted profiles
-   * Trend aggregation chart
+![8_Screenshot_Streamlit_summary_output_example_usage1.jpeg](images/8_Screenshot_Streamlit_summary_output_example_usage1.jpeg)
+
    * Fact‑checking annotations
+![9_Screenshot_Streamlit_fastcheck_output_example_usage1.jpeg](images/9_Screenshot_Streamlit_fastcheck_output_example_usage1.jpeg)
+
    * Enrichment insights sourced from external web search
-![Trend extraction UI](images/7_Screenshot_Streamlit_example_outputs_example_usage1.jpeg)
-4. **Inspect Orchestration**
-   Click “View Flowchart” in the sidebar to see the LangGraph diagram.
+![10_Screenshot_message_saved_outputs_example_usage1.jpeg](images/10_Screenshot_message_saved_outputs_example_usage1.jpeg)
+
+
+**Overall final output**
+
+![7_Screenshot_Streamlit_example_outputs_example_usage1.jpeg](images/7_Screenshot_Streamlit_example_outputs_example_usage1.jpeg)
+
 
 ---
 
