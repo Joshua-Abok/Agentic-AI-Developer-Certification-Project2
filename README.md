@@ -18,8 +18,6 @@ The **LangGraph‑Orchestrated Research Assistant** is a Streamlit‑based web a
 * Contextual enrichment via external search (Tavily)
 * Visualization of orchestration logic through Mermaid and Graphviz flowcharts
 
-This modular, secure pipeline facilitates rapid document comparison, summarization, and enrichment, ideal for Ready Tensor users, developers, and enterprise research teams.
-
 ---
 
 ## Tool Overview & Architecture
